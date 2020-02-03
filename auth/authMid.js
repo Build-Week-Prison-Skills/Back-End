@@ -29,7 +29,7 @@ function newToken(staff) {
 
     };
     const secret= tkn;
-    return Jwt.sign(payload, options, secret)
+    return Jwt.sign(payload, secret, options)
 }
 
 

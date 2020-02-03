@@ -1,7 +1,9 @@
+//colin and jordan 
 const db = require('../db-Config')
 
 module.exports = {
-add
+add,
+findBy
 };
 
 //register 
@@ -11,4 +13,8 @@ async function add(Staff) {
         .select('id', 'UserName', 'Password', 'Prison_id')
         .where({id})
         .first();
+}
+
+function findBy(filter) {
+    return db('Staff').where(filter).first();
 }
