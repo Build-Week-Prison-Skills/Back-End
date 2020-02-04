@@ -152,7 +152,35 @@ router
             message: 'unable to delete the prison'
           })
         }
-          
-        
+
+  });
+  //delete prisoners and edit prisoner
+
+  router.delete('/prisoners/:id', async (req, res)=> {
+    try {
+      console.log(Prisoners)
+      const ID = await Prisoners.remove(req.params.id);
+      
+      if (ID > 0) {
+      
+        res
+          .status(200)
+          .json({ message: "prisoner has been deleted" });
+      } else {
+        res
+          .status(404)
+          .json({ message: "this prisoner can not be found" });
+      }
+    } catch (err) {
+      console.log(err);
+      res
+        .status(500)
+        .json({ message: "unable to delete prisoner from db" });
+    }
   })
+
+
+
+
+  
 module.exports = router;
