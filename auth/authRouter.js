@@ -7,6 +7,7 @@ const bcrypt= require ('bcryptjs');
 const {newToken}= require('./authMid');
 const Staff= require('../data/Models/Staff-Model');
 const Prisoners = require('../data/Models/Prisoners-Model');
+const Prisons = require('../data/Models/Prisons-Model');
 
 
 
@@ -69,7 +70,7 @@ Staff.add(staff)
                     error: 'unable to add Priosner to the DB'
                 })
         }
-    })
+    });
 
 
    
