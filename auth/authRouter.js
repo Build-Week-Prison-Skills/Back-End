@@ -9,6 +9,7 @@ const Staff = require("../data/Models/Staff-Model");
 const Prisoners = require("../data/Models/Prisoners-Model");
 const Prisons = require("../data/Models/Prisons-Model");
 
+//Login //Register
 router.post("/register", (req, res) => {
   let staff = req.body;
   const hash = bcrypt.hashSync(staff.password, 10);
@@ -49,6 +50,8 @@ router.post("/login", (req, res) => {
     });
 });
 
+//Prisoner End Points
+
 router.post("/prisoners", async (req, res) => {
   const prisoners = req.body;
   console.log(prisoners);
@@ -68,7 +71,7 @@ router.post("/prisoners", async (req, res) => {
   }
 });
 
-// ADDING PRISONS AND UPDATING PRISONS
+// Post PUT Get Delete prisons
 
 router.post("/prisons", async (req, res) => {
   const prisons = req.body;
@@ -131,4 +134,25 @@ router
     
   })
 
+  router.delete('/prisons/:id', async (req, res)=> {
+        try {
+          const ID = await Prisons.remove(req.params.id);
+          if (ID > 0) {
+            res.status(201).json({
+              message: 'Success the prison has been deleted'
+            })
+          } else {
+            res.status(404).json({
+              message: 'the prison with that id doesnt exist'
+            })
+          }
+        } catch (error) {
+          console.log(error);
+          res.status(500).json({
+            message: 'unable to delete the prison'
+          })
+        }
+          
+        
+  })
 module.exports = router;
