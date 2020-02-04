@@ -17,7 +17,7 @@ server.use('/api/auth', authRouter);
 server.use('/api/prisons', prisonRouter);
 
 server.get('/', (req,res)=>{
-    res.send('test test')
+    res.status(200).json({api:'test test'})
 })
 
 module.exports= server
