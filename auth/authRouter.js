@@ -90,4 +90,25 @@ router.post("/prisons", async (req, res) => {
   }
 });
 
+router
+  .get('/prisons/:id', (req, res) => {
+    Prisons.findByID(req.params.id)
+      .then(prisoner => {
+        console.log(prisoner)
+        if (req.params.id) {
+          res.status(201).json(prisoner);
+        } else {
+          res
+            .status(404).json({
+              message: "no prison with that ID exists"
+            });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).json({
+          message: "could not get prison from the db"
+        })
+      })
+  })
 module.exports = router;

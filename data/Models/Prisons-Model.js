@@ -28,8 +28,8 @@ function findByID(id){
     return db ('prisons')
     .select(
         'id',
-        'name',
-        'location',
+        'Prison_name',
+        'Location',
         'available_prisoners'
 
     )
