@@ -28,7 +28,7 @@ function findByID(id){
     return db ('prisons')
     .select(
         'id',
-        'Prison_name',
+        'Prison_Name',
         'Location',
         'available_prisoners'
 

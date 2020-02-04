@@ -111,4 +111,24 @@ router
         })
       })
   })
+
+  router.put('/prisons/:id', async (req, res)=> {
+     try {
+       const change = await Prisons.update(req.params.id, req.body);
+       if (change) {
+        res.status(200).json({ message: "updated!" });
+       } else {
+        res
+        .status(404)
+        .json({ message: "this Prison id could not be found" });
+       }
+     }catch (err) {
+      console.log(err);
+      res
+        .status(500)
+        .json({ message: "failed to update the  Prisons database" });
+    }
+    
+  })
+
 module.exports = router;
