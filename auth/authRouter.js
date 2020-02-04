@@ -6,6 +6,7 @@ const router= express.Router();
 const bcrypt= require ('bcryptjs');
 const {newToken}= require('./authMid');
 const Staff= require('../data/Models/Staff-Model');
+const Prisoners = require('../data/Models/Prisoners-Model');
 
 
 
@@ -51,6 +52,27 @@ Staff.add(staff)
 
     });
 
+    router.post('/prisoners', async (req, res) => {
+        const prisoners = req.body;
+        console.log(prisoners)
+        if(!prisoners.name || !prisoners.skills ) {
+            return res.status(401).json({message: 'Please provide all required fields'});
+
+        } try {
+            const newPrisoner = await Prisoners.add(prisoners);
+            res.status(200).json({message: 'Prisoner was added to the DB'})
+
+        } catch (error) {
+            console.log(error);
+            res
+                .status(404).json({
+                    error: 'unable to add Priosner to the DB'
+                })
+        }
+    })
+
+
+   
 
 
 module.exports= router;
