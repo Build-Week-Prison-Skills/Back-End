@@ -3,7 +3,7 @@ const router = require('express').Router();
 
 const Prisoners = require('../Models/Prisoners-Model');
 
-//api/auth/prisoners
+//api/prisoners
 router 
     .get('/', async (req, res) => {
         try {
