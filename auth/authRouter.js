@@ -71,11 +71,12 @@ router.post("/prisoners", async (req, res) => {
 // ADDING PRISONS AND UPDATING PRISONS
 
 router.post("/prisons", async (req, res) => {
-  const prison = req.body;
-  console.log(prison);
-  if (!prison.name || !prison.location) {
+  const prisons = req.body;
+  console.log(prisons);
+  if (!prisons.Prison_Name || !prisons.Location) {
+
     return res
-      .status(401)
+      .status(400)
       .json({ message: "Please give required prison info" });
   }
   try {

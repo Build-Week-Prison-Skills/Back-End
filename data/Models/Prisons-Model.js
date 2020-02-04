@@ -47,7 +47,7 @@ function findPrisoners(id){
 async function add (prison) {
     const [id]= await db('prisons').insert(prison).returning('id');
     return db('prisons')
-    .select('id', 'name', 'location', 'available_prisoners')
+    .select('id', 'Prison_Name', 'Location', 'available_prisoners')
     .where({id})
     .first();
 };
