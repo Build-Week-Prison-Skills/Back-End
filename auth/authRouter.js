@@ -28,14 +28,14 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  let { username, password } = req.body;
+  let { UserName, Password } = req.body;
 
-  Staff.findBy({ username })
+  Staff.findBy({ UserName })
     .first()
     .then(staff => {
-      console.log(staff, password);
-      if (staff && bcrypt.compareSync(password, staff.Password)) {
-        const token = newToken(staff);
+      console.log(Staff.Password);
+      if (staff && bcrypt.compareSync(Password, staff.Password)) {
+        const token = newToken(Staff);
         res.status(200).json({
           message: `Welcome Back ${staff.UserName}.`,
           token
