@@ -29,3 +29,15 @@ describe('/login', () => {
         expect(res.status).toBe(500)
     });
   });
+
+  describe('/prisons/id', () => {
+      it("getting prisons by id", async () => {
+          const res= await request(server)
+          .get('/api/auth/prisons/:id')
+          .set({
+              authorization:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxOSwiaWF0IjoxNTgwODk0NzI0LCJleHAiOjE1ODE0OTk1MjR9.z9x88ehLOB3fdweKxTca37uCZzNTi9DRnnWECOkZzOM'
+              //must have valid token to login
+          })
+          expect(res.status).toBe(500)
+      })
+  })
