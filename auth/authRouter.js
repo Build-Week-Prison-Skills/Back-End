@@ -71,6 +71,25 @@ router.post("/prisoners", async (req, res) => {
   }
 });
 
+
+router.put('/prisoners/:id', async (req,res) => {
+  try  {
+    const change = await Prisoners.update(req.params.id, req.body);
+    if (change) {
+      res.status(200).json({ message: "update successful" });
+    } else {
+      res
+        .status(404)
+        .json({ message: "unable to find priosner with that id in the database" });
+    }
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .json({ message: "Failed to update this prisoner" });
+  }
+})
+
 // Post PUT Get Delete prisons
 
 router.post("/prisons", async (req, res) => {
