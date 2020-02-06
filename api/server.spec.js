@@ -19,10 +19,7 @@ describe('test test', () => {
           .expect({ api: 'test test' })
       })
 
-      it('returns a 200 OK supertest', () => {
-        return request(server).get('/')
-          .expect(200)
-      })
+      
 
       it('returns the right headers', () => {
         // multi-assertion test
@@ -30,7 +27,10 @@ describe('test test', () => {
           .expect('Content-Length', '19')
           .expect('Content-Type', /json/)
       })
+    });
+
+
+    it('returns a 200, sanity check', () => {
+      return request(server).get('/')
+        .expect(200)
     })
-
-
-    

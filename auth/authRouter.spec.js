@@ -30,6 +30,7 @@ describe('/login', () => {
     });
   });
 
+  //get prisons by id
   describe('/prisons/id', () => {
       it("getting prisons by id", async () => {
           const res= await request(server)
@@ -39,5 +40,6 @@ describe('/login', () => {
               //must have valid token to login
           })
           expect(res.status).toBe(500)
-      })
-  })
+      });
+  });
+  
